@@ -32,3 +32,4 @@ const App = connect(
 });
 
 const root = createRoot(document.querySelector('#root'));
+root.render(<Provider store={ store }><Router><App /></Router></Provider>);
