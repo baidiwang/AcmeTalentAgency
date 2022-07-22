@@ -4,6 +4,8 @@ import { Provider, connect } from 'react-redux';
 import store, { fetchClients, fetchSkills, fetchClientSkills}  from './store';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import Home from './Home';
+import SkillForm from './SkillForm';
+import Client from './Client';
 
 const App = connect(
   state => state,
@@ -26,6 +28,8 @@ const App = connect(
       <div>
         <h1><Link to='/'>Acme Talent Agency</Link></h1>
         <Route path='/' exact component={ Home } />
+        <Route path='/skills/:id' component={ SkillForm } />
+        <Route path='/clients/:id' component={ Client } />
       </div>
     );
   }

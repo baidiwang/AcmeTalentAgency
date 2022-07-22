@@ -6,13 +6,43 @@ const { Client, Skill, ClientSkill } = db;
 
 
 
+app.use(express.json());
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
 
 app.get('/', (req, res)=> res.sendFile(path.join(__dirname, 'index.html')));
 
+app.post('/api/clientSkills', async(req, res, next)=> {
+  try {
+    res.send(await ClientSkill.create(req.body));
+  }
+  catch(ex){
+    next(ex);
+  }
+});
 app.get('/api/clients', async(req, res, next)=> {
   try {
     res.send(await Client.findAll());
+  }
+  catch(ex){
+    next(ex);
+  }
+});
+
+app.get('/api/skills/:id', async(req, res, next)=> {
+  try {
+    res.send(await Skill.findByPk(req.params.id));
+  }
+  catch(ex){
+    next(ex);
+  }
+});
+
+app.put('/api/skills/:id', async(req, res, next)=> {
+  try {
+    const skill = await Skill.findByPk(req.params.id);
+    console.log(req.body);
+    await skill.update(req.body)
+    res.send(skill);
   }
   catch(ex){
     next(ex);
