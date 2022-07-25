@@ -66,12 +66,12 @@ export const updateSkill = (skill)=> {
   };
 };
 
-export const fetchClientSkills = ()=> {
-  return async(dispatch)=> {
-    const clientSkills = (await axios.get('/api/clientSkills')).data;
-    dispatch({ type: 'SET_CLIENT_SKILLS', clientSkills });
-  };
-};
+// export const fetchClientSkills = ()=> {
+//   return async(dispatch)=> {
+//     const clientSkills = (await axios.get('/api/clientSkills')).data;
+//     dispatch({ type: 'SET_CLIENT_SKILLS', clientSkills });
+//   };
+// };
 
 
-export default store;
+// export default store;
